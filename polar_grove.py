@@ -32,6 +32,7 @@ PPI_WRITE_CMD = bytearray([0x02, 0x03, 0x00, 0x01, 0x82, 0x00, 0x01, 0x01, 0x16,
 SESSION_NAME = None
 ADC_CHANNEL = 0
 
+
 class PolarMultiStreamManager:
     def __init__(self, filename_prefix="polar_session"):
         self.prefix = filename_prefix
@@ -105,6 +106,7 @@ class PolarMultiStreamManager:
     def _parse_ppg(self, sender, data: bytearray):
         """Parses polar OH1+ PPG packet"""
         
+        
         if len(data) < 22:
             return
         
@@ -132,10 +134,25 @@ class PolarMultiStreamManager:
         ppg1 = int.from_bytes(data[frame_offset+3:frame_offset+5], byteorder='little')
         ppg2 = int.from_bytes(data[frame_offset+6:frame_offset+8], byteorder='little')
         ambient = int.from_bytes(data[frame_offset+9:frame_offset+11], byteorder='little')
-
-        ts = datetime.now().strftime("%H:%M:%S.%f")
-        print(f"[{ts}] PPG0: {ppg0} | PPG1: {ppg1} | PPG2: {ppg2} | ambient: {ambient}")
         
+        ts = time.strftime("%H:%M:%S")
+
+        """
+        time = datetime.now()
+
+        if INITIAL_SECOND == 0
+            last_time_second = 0
+        
+        time_second = time.second
+        if time_second > last_time_second:
+            
+            print(f"[{ts}] ")
+
+        last_time = datetime.now()        
+
+        last_time_second = last_time.second
+        """
+
         self.data_ppg_OH1.append([ts, ppg0, ppg1, ppg2, ambient])
 
     def _parse_ppi_OH1(self, sender, data: bytearray):
@@ -380,6 +397,8 @@ class PolarMultiStreamManager:
         
         self.running_H10 = True
         while self.running_H10:
+            ts = time.strftime("%H:%M:%S")
+            print(f"[{ts}] ")
             await asyncio.sleep(1)
 
 
@@ -396,7 +415,7 @@ class PolarMultiStreamManager:
 
         # Start Standard HR/RR Stream
         await self.client_OH1.start_notify(UUID_HR_MEASUREMENT, self._parse_hr_rr_OH1)
-        print("OH1+ HR/RR stream started.")
+        print("OH1+ HR stream started.")
 
         #Start SINGLE PMD Data stream (handles both PPI and PPG)
         await self.client_OH1.start_notify(UUID_PMD_DATA, self._parse_pmd_data_OH1)
@@ -413,7 +432,8 @@ class PolarMultiStreamManager:
         
         self.running_OH1 = True
         while self.running_OH1:
- 
+            await asyncio.sleep(1)
+
     async def stop_and_save(self):
         """Disconnect and save data"""
         # Disconnect clients
@@ -422,14 +442,16 @@ class PolarMultiStreamManager:
                 await self.client_H10.disconnect()
                 print("H10 disconnected")
             except Exception as e:
-                print(f"Error disconnecting H10: {e}")
+                print(f"Error disconnecting H10: {e}, error type: {type(e)}")
         
+        await asyncio.sleep(0.5)
+
         if self.client_OH1 and self.client_OH1.is_connected:
             try:
                 await self.client_OH1.disconnect()
                 print("OH1 disconnected")
             except Exception as e:
-                print(f"Error disconnecting OH1: {e}")
+                print(f"Error disconnecting OH1: {e}, error type: {type(e)}")
 
 
         self._save_csvs()
@@ -468,7 +490,7 @@ class PolarMultiStreamManager:
             w.writerows(self.data_ppg_OH1)
 
 
-        #save gsr 
+        #save gsr
         fn_gsr = f"{SESSION_NAME}_{self.prefix}_gsr.csv"
         print(f"GSR: Saving {len(self.data_gsr)} GSR samples to {fn_gsr}...")
         with open(fn_gsr, 'w', newline='') as f:
