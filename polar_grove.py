@@ -11,6 +11,7 @@ from pathlib import Path
 import pandas as pd
 from bleak import BleakClient, BleakScanner
 from bleak.backends.characteristic import BleakGATTCharacteristic
+from events import KeyEventLogger
 from grove_gsr_sensor import GroveGSRSensor
 from logs import LEVELS, LogLevel, configure_logger
 from loguru import logger
@@ -549,10 +550,11 @@ if __name__ == '__main__':
         if overwrite.upper() != 'Y':
             logger.error('Aborting to prevent overwrite.')
             sys.exit(0)
+    eventfile = logfile.with_suffix('.events.csv')
     ADC_CHANNEL = int(prompt('>>> Grove ADC Channel: ', validator=int_validator))
     log_level: LogLevel = (
         prompt(
-            '>>> Log verbosity level (TRACE, DEBUG, INFO, SUCCESS, WARNING, ERROR, CRITICAL) [INFO]: ',
+            '>>> Log verbosity level (TRACE, DEBUG, [INFO], SUCCESS, WARNING, ERROR, CRITICAL): ',
             validator=log_validator,
             default='INFO',
         )
@@ -560,11 +562,13 @@ if __name__ == '__main__':
         .upper()
     )  # type: ignore
 
+    configure_logger(log_level, file=logfile.open('w'))
     logger.success(f'Starting session "{SESSION_NAME}" using Grove ADC Channel {ADC_CHANNEL}')
     logger.info('Press Ctrl+C to stop and save data.')
     logger.info(f'Writing logs to {logfile}')
-    configure_logger(log_level, file=logfile.open('w'))
     logger.log(log_level, f'Logging configured with verbosity level {log_level}')
 
     with contextlib.suppress(KeyboardInterrupt):
+        event_logger = KeyEventLogger(eventfile)
         asyncio.run(main())
+        event_logger.save_events()
