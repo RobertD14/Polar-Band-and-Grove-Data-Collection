@@ -9,13 +9,14 @@ import pandas as pd
 from loguru import logger
 from pynput.keyboard import Key, Listener
 
-# Labels for adding event logging
+# Keys and labels for event logging
 EVENT_LABELS: dict[str, str] = {
     'n': 'N-Back',
     's': 'Stroop',
     'r': 'Reaction',
     'z': 'Resting',
 }
+LISTEN = tuple(EVENT_LABELS.keys())
 
 
 @dataclass
@@ -35,8 +36,7 @@ class KeyEvent:
 class KeyEventLogger:
     """Log filtered key events with timestamps."""
 
-    # Keys that are listened to by the thread
-    listen: tuple[str, ...] = ('n', 's', 'r', 'z')
+    listen: tuple[str, ...] = LISTEN
 
     def __init__(self, outfile: Path) -> None:
         """Initialize the KeyEventLogger with a target outfile."""
@@ -63,6 +63,11 @@ class KeyEventLogger:
         """Stop running event listener and save event buffer to disk."""
         if self.listener.is_alive():
             self.listener.stop()
+
+        if self.events:
+            latest = self.events[-1]
+            if latest.event_type == 'Start':
+                self.log_event(latest.key)
 
         events = pd.DataFrame(self.events)
         events.to_csv(self.outfile, index=False)
