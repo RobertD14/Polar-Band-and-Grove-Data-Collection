@@ -11,12 +11,11 @@ from pathlib import Path
 import pandas as pd
 from bleak import BleakClient, BleakScanner
 from bleak.backends.characteristic import BleakGATTCharacteristic
+from cli import AutoComplete, Session
 from events import KeyEventLogger
 from grove_gsr_sensor import GroveGSRSensor
 from logs import LEVELS, LogLevel, configure_logger
 from loguru import logger
-from prompt_toolkit import prompt
-from prompt_toolkit.validation import Validator
 
 configure_logger()
 ROOT = Path(__file__).parent
@@ -520,47 +519,17 @@ if __name__ == '__main__':
     if sys.platform == 'win32':
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-    log_validator = Validator.from_callable(
-        lambda x: x.strip().upper() in LEVELS,
-        error_message=f'Please choose from {LEVELS}',
-        move_cursor_to_end=True,
-    )
-    blank_validator = Validator.from_callable(
-        lambda x: bool(x.strip()),
-        error_message='This input cannot be blank',
-        move_cursor_to_end=True,
-    )
-    yn_validator = Validator.from_callable(
-        lambda x: x.strip().upper() in ('Y', 'N', ''),
-        error_message='Please enter Y or N',
-        move_cursor_to_end=True,
-    )
-    int_validator = Validator.from_callable(
-        lambda x: x.isdigit(),
-        error_message='This input contains non-numeric characters',
-        move_cursor_to_end=True,
-    )
-
-    SESSION_NAME = prompt('>>> Session Name: ', validator=blank_validator)
+    SESSION_NAME = Session().prompt('>>> Session Name')
     logfile = ROOT / f'{SESSION_NAME}.log'
     if logfile.exists():
-        overwrite = prompt(
-            f'>>> Log file found for session "{SESSION_NAME}". Overwrite? Y/[N]: ', validator=yn_validator
-        )
+        text = f'>>> Session "{SESSION_NAME}" already exists. Overwrite?'
+        overwrite = AutoComplete(default='N', options=['Y', 'N']).prompt(text)
         if overwrite.upper() != 'Y':
             logger.error('Aborting to prevent overwrite.')
             sys.exit(0)
     eventfile = logfile.with_suffix('.events.csv')
-    ADC_CHANNEL = int(prompt('>>> Grove ADC Channel: ', validator=int_validator))
-    log_level: LogLevel = (
-        prompt(
-            '>>> Log verbosity level (TRACE, DEBUG, [INFO], SUCCESS, WARNING, ERROR, CRITICAL): ',
-            validator=log_validator,
-            default='INFO',
-        )
-        .strip()
-        .upper()
-    )  # type: ignore
+    ADC_CHANNEL = int(AutoComplete(default='0', options=['0', '1']).prompt('>>> Grove ADC Channel'))
+    log_level: LogLevel = AutoComplete(default='INFO', options=LEVELS).prompt('>>> Logging severity')  # type: ignore
 
     configure_logger(log_level, file=logfile.open('w'))
     logger.success(f'Starting session "{SESSION_NAME}" using Grove ADC Channel {ADC_CHANNEL}')
