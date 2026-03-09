@@ -3,11 +3,12 @@
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
+from threading import Thread
 from typing import Literal
 
 import pandas as pd
 from loguru import logger
-from pynput.keyboard import Key, Listener
+from sshkeyboard import listen_keyboard, stop_listening
 
 # Keys and labels for event logging
 EVENT_LABELS: dict[str, str] = {
@@ -42,7 +43,7 @@ class KeyEventLogger:
         """Initialize the KeyEventLogger with a target outfile."""
         self.events: list[KeyEvent] = []
         self.outfile = outfile
-        self.listener = Listener(on_press=self.on_press, suppress=True)  # type: ignore
+        self.listener = Thread(target=listen_keyboard, kwargs={'on_press': self.on_press})
         self.listener.start()
 
     def log_event(self, key: str) -> None:
@@ -61,8 +62,9 @@ class KeyEventLogger:
 
     def save_events(self) -> None:
         """Stop running event listener and save event buffer to disk."""
+        logger.info('Stopping key listener and saving events...')
         if self.listener.is_alive():
-            self.listener.stop()
+            stop_listening()
 
         if self.events:
             latest = self.events[-1]
@@ -71,11 +73,9 @@ class KeyEventLogger:
 
         events = pd.DataFrame(self.events)
         events.to_csv(self.outfile, index=False)
+        logger.success(f'Saved {len(self.events)} to {self.outfile.name}')
 
-    def on_press(self, key: Key) -> None:
+    def on_press(self, key: str) -> None:
         """Handle key press events."""
-        try:
-            if (char := getattr(key, 'char', None)) in self.listen:
-                self.log_event(char)
-        except AttributeError:
-            pass
+        if key in self.listen:
+            self.log_event(key)
