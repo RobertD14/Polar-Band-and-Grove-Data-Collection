@@ -30,7 +30,7 @@ LEVEL_COLOR: dict[LogLevel, str] = {
 LOGGER_FORMAT = (
     '<light-black>{time:YYYY-MM-DD HH:mm:ss.SSS}</light-black> | '
     '<level><bold>{level: >8}</bold></level> | '
-    '<black>{extra[path]: >36}</black> | : '
+    '<black>{extra[path]: >24}</black> | : '
     '<level>{message}</level>\n'
 )
 
@@ -38,7 +38,8 @@ LOGGER_FORMAT = (
 def configure_logger(level: LogLevel = 'INFO', file: loguru.Writable | TextIOWrapper | None = None) -> None:
     """Configure the logger with a specific level."""
     logger.remove()
-    logger.add(sys.stderr, level=level, format=formatter)
+    logger.configure(extra={'overwrite': False})
+    logger.add(sys.stderr, level=level, format=_overwrite_stderr)
     if file:
         logger.add(file, level=level, format=formatter)
 
@@ -49,4 +50,13 @@ def configure_logger(level: LogLevel = 'INFO', file: loguru.Writable | TextIOWra
 def formatter(record: loguru.Record) -> str:
     """Format the log message based on the level."""
     record['extra']['path'] = f'{Path(record["file"].path).relative_to(ROOT)}:{record["line"]}'
+    if record['extra'].get('overwrite', False):
+        return ''
     return LOGGER_FORMAT
+
+
+def _overwrite_stderr(record: loguru.Record) -> str:
+    """Format the log message for overwriting."""
+    record['extra']['path'] = f'{Path(record["file"].path).relative_to(ROOT)}:{record["line"]}'
+    format_ = '\033[F\033[K' if record['extra'].get('overwrite', False) else ''
+    return format_ + LOGGER_FORMAT

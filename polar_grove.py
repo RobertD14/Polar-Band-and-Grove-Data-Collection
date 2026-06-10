@@ -360,8 +360,8 @@ class PolarMultiStreamManager:
 
         self.running_H10 = True
         while self.running_H10:
-            ts = time.strftime('%H:%M:%S')
-            logger.info(f'[{ts}] ')
+            # ts = time.strftime('%H:%M:%S')
+            # logger.info(f'[{ts}] ')
             await asyncio.sleep(1)
 
     async def start_streaming_OH1(self) -> None:
