@@ -1,0 +1,10 @@
+# General
+__pycache__/
+.vscode/
+.DS_Store
+.ipynb_checkpoints/
+.mypy_cache/
+
+# Output files
+*.log
+*.csv
