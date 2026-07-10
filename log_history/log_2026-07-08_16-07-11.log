@@ -1,0 +1,282 @@
+[2026-07-08 16:07:14] Make sure your bluetooth is on
+
+[2026-07-08 16:07:15] ==================================================
+
+[2026-07-08 16:07:15]   SCANNER MULTI-DEVICES POLAR (H10 / OH1) + LSL + UDP
+
+[2026-07-08 16:07:15] ==================================================
+
+[2026-07-08 16:07:15] 
+
+[2026-07-08 16:07:15] [Polar] Scan Bluetooth en cours...
+
+[2026-07-08 16:07:23] SELECT DEVICES
+
+[2026-07-08 16:07:23]   [Polar OH1] Polar OH1 021A053D  (24:AC:AC:02:1A:05) — In waiting of validation [Y/N] from the interface...
+
+[2026-07-08 16:07:26] [UDP] Connection choice saved : Y
+
+[2026-07-08 16:07:26]     -> Selected 
+
+[2026-07-08 16:07:26]   [Polar H10] Polar H10 099EED32  (24:AC:AC:09:9E:ED) — In waiting of validation [Y/N] from the interface...
+
+[2026-07-08 16:07:27] [UDP] Connection choice saved : Y
+
+[2026-07-08 16:07:27]     -> Selected 
+
+[2026-07-08 16:07:27] [INFO] Streaming LSL mode activated
+
+[2026-07-08 16:07:27] 2026-07-08 16:07:27.809 (  12.724s) [        52179B8E]      netinterfaces.cpp:36    INFO| netif '{539DC577-D99F-4316-A639-663F22E9C6BE}' (status: 2, multicast: 1
+
+[2026-07-08 16:07:27] 2026-07-08 16:07:27.809 (  12.724s) [        52179B8E]      netinterfaces.cpp:36    INFO| netif '{03D9F15A-86BA-4B7A-A147-4EBD233E9CB6}' (status: 2, multicast: 1
+
+[2026-07-08 16:07:27] 2026-07-08 16:07:27.809 (  12.725s) [        52179B8E]      netinterfaces.cpp:36    INFO| netif '{86555E7A-DE92-468E-9441-D4D1450E0FAD}' (status: 2, multicast: 1
+
+[2026-07-08 16:07:27] 2026-07-08 16:07:27.810 (  12.725s) [        52179B8E]      netinterfaces.cpp:36    INFO| netif '{A569205C-FFC8-48F8-A20C-C21819A3FF1D}' (status: 1, multicast: 1
+
+[2026-07-08 16:07:27] 2026-07-08 16:07:27.810 (  12.725s) [        52179B8E]      netinterfaces.cpp:58    INFO| 	IPv6 ifindex 16
+
+[2026-07-08 16:07:27] 2026-07-08 16:07:27.810 (  12.725s) [        52179B8E]      netinterfaces.cpp:36    INFO| netif '{29230910-F66C-481E-A68D-484BEE8D21A6}' (status: 2, multicast: 1
+
+[2026-07-08 16:07:27] 2026-07-08 16:07:27.810 (  12.726s) [        52179B8E]      netinterfaces.cpp:36    INFO| netif '{0F9D47FB-694C-11F1-A216-806E6F6E6963}' (status: 1, multicast: 1
+
+[2026-07-08 16:07:27] 2026-07-08 16:07:27.810 (  12.726s) [        52179B8E]      netinterfaces.cpp:58    INFO| 	IPv6 ifindex 1
+
+[2026-07-08 16:07:27] 2026-07-08 16:07:27.811 (  12.726s) [        52179B8E]         api_config.cpp:126   INFO| Loaded default config
+
+[2026-07-08 16:07:27] 2026-07-08 16:07:27.811 (  12.726s) [        52179B8E]             common.cpp:78    INFO| git:64988c6a14b8dc3b3f270ece58eab4f480bfab43/branch:refs/tags/v1.17.7/build:Release/compiler:MSVC-19.29.30159.0/link:SHARED
+
+[2026-07-08 16:07:27] START STREAMING
+
+[2026-07-08 16:07:27]   Polar OH1  24:AC:AC:02:1A:05  :  C:\Users\elois\anaconda3\envs\dataEnvironment\python.exe PolarOH1_LSL.py --mac 24:AC:AC:02:1A:05 --category-file C:\Users\elois\AppData\Local\Temp\polar_category.txt
+
+[2026-07-08 16:07:27]   Polar H10  24:AC:AC:09:9E:ED  :  C:\Users\elois\anaconda3\envs\dataEnvironment\python.exe PolarH10_LSL.py --mac 24:AC:AC:09:9E:ED --category-file C:\Users\elois\AppData\Local\Temp\polar_category.txt
+
+[2026-07-08 16:07:28] [16:07:27] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:28] Connecting to Polar OH1 at 24:AC:AC:02:1A:05...
+
+[2026-07-08 16:07:28] Connecting directly to Polar H10 at 24:AC:AC:09:9E:ED without scanning...
+
+[2026-07-08 16:07:28] 2026-07-08 16:07:28.070 (   0.02026-0714s) [        BE7703CE]    -08 16:07:28.070 (   0.014s) [        netinterfaces.cpp:36    INFO| ne  45D9CA5F]t      netinterfaces.if '{539DC577cpp:36    INFO| n-D99F-43eti1f6- '{539DC577-D99F-4316-A639-663F22E9C6BE}' (statAus: 2, mult639-663F22E9C6Bicast: 1
+
+[2026-07-08 16:07:28] E2}' (sta026-07-08 16tus::0 2,7:2 8.multicast: 1
+
+[2026-07-08 16:07:28] 2026-07-0701 (8 1   6:07:28.071 (   0.015s) [        BE7703CE] 0.015s) [        45D9CA5F]      netinterfaces.cpp:36         INFO| nnetif '{03D9F15A-86BA-4B7A-A147-4EBD233E9CB6e}t' (isnterfaces.cpp:36    INFO| netif '{03tatus:D9F15A-86BA-4B7A-A147-4EBD233E9CB6}' (status: 2, mult i2cas,t multicast: 1
+
+[2026-07-08 16:07:28] 2026-07-08 16:07:28.071 (: 1
+
+[2026-07-08 16:07:28]    02026-07-08 16:07:28.071 (   0.016s) [        B.016s) E7703CE]      netinterfaces.cpp:36    INFO| netif '[{ 86 5 5     45D9CA5F]      netinterfaces.cpp5E7A-D:E936 2   INFO| netif '{86555E7A-DE92--46468E-9441-D4D1450E0FAD}' (status: 2, mult8iEcas-t9441-D4D1450E0FAD}' (status: 2, mul: 1
+
+[2026-07-08 16:07:28] tica2s026-07-08 16:07:28.072 (   0.016st: 1
+
+[2026-07-08 16:07:28] ) [  2 0 2 6 - 07-08 16:07:28.072 (   0.016s) [  45D9C A5F   ]      B E 7 703Cnetinterfaces.cpp:36    INFO| netif '{A56920E]   5C-FFC8-48F8-A20C-C2181   netinterfaces.cpp:9A3FF1D}' (stat36u s   INFO: 1, multic| neast: 1
+
+[2026-07-08 16:07:28] t2026-07-08 if '{A516:07:28.072 (   0.017s) [        45D9CA5F]      neti69205nterfaces.cpp:58    INFO| 	IPv6 ifinCdex 16
+
+[2026-07-08 16:07:28] 2026-07-08 16:-0FF7:2C88.-48F8-A20C-C21819A3FF1D}' (073 (   0.017s) [  statu      45D9CA5F]      netinterfaces.cpp:36    INFO| netif '{29230910-F6s6C-481E-A68D-484BEE8D21A6}' (:status: 2, multicast: 1
+
+[2026-07-08 16:07:28]  2026-017-0, multicast: 1
+
+[2026-07-08 16:07:28] 2026-07-08 18 16:07:6:07:28.073 (   0.0127s) [        BE7703CE]      netinterfaces.cpp:588    I.NFO| 	IPv6 ifindex 16
+
+[2026-07-08 16:07:28] 2026073-07-08  16(  :07 :02.80.10773 (s)    [  0.018s) [              4B5ED9C7703CA5F]      nE]      netinterfetinterfacaces.cpp:36 es . cpp: I36    INFON| netiFfO| '{ 0F9D47FB-694netif C'{2-11F1-A216-806E6F6E6963}' (status: 1, multica923091st: 1
+
+[2026-07-08 16:07:28] 0-F66C-481E-A68D-484BEE8D21A6}' (status: 2, multicast: 2026-017-
+
+[2026-07-08 16:07:28] 020268 16:07:28.074 (   0.018s) [        45D9CA-07-085 16:07:28.074 (   F]    0 . netinterfaces.cpp:58    INFO| 	IPv6 ifindex 0118
+
+[2026-07-08 16:07:28] s) [        BE7703CE]      netinterfaces.cpp:36    INFO| neti2026-07f- 08 16:07:28.074 (   0.019s) [        45D9CA5F] '{0F9D47FB-6      9 4 Ca-p1i1_Fc1o-nAfig.cpp:126   INFO| Loaded default config
+
+[2026-07-08 16:07:28] 216-806E6F6E6963}' (status: 1, multicast: 1
+
+[2026-07-08 16:07:28] 2026-07-08 16:07:28.075 (   0.019s) [        BE7703CE]      netinterfaces.cpp:58    INFO| 	IPv6 ifindex 1
+
+[2026-07-08 16:07:28] 2026-2026-07-08 16:07:28.07-07508 1 6:07:28.075 (   0.019s) [        45D9CA5F]       (   0.019s)       [c o m m o n . c pBpE:77780 3 C E ]I NFO| git:64988c6a1        a4pbi_conf8ig.cdc3pb3fp:1226   INF70ece58eaOb| Loaded default config
+
+[2026-07-08 16:07:28] 4f480bfab43/branch:refs/tags/v1.17.7/build:Release/compiler:MSVC-19.29.30159.0/link:SHARED
+
+[2026-07-08 16:07:28] 2026-07-08 16:07:28.076 (   0.020s) [        BE7703CE]             common.cpp:78    INFO| git:64988c6a14b8dc3b3f270ece58eab4f480bfab43/branch:refs/tags/v1.17.7/build:Release/compiler:MSVC-19.29.30159.0/link:SHARED
+
+[2026-07-08 16:07:29] [16:07:28] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:30] [16:07:29] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:31] [16:07:30] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:32] [16:07:31] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:33] [16:07:32] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:34] [16:07:33] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:35] [16:07:34] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:36] [16:07:35] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:37] [16:07:36] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:37] Connected!
+
+[2026-07-08 16:07:37] Enabling HR stream...
+
+[2026-07-08 16:07:38] [16:07:37] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:38] Enabling ECG stream...
+
+[2026-07-08 16:07:38] [16:07:38] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:38] PMD response: f00200000000
+
+[2026-07-08 16:07:38] ECG stream started.
+
+[2026-07-08 16:07:38] Streaming ECG and HR data via LSL...
+
+[2026-07-08 16:07:40] [16:07:39] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:41] [16:07:40] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:42] [16:07:41] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:43] [16:07:42] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:44] [16:07:43] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:45] [16:07:44] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:46] [16:07:45] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:47] [16:07:46] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:48] [16:07:47] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:49] [16:07:48] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:50] [16:07:49] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:51] [16:07:50] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:52] [16:07:51] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:53] [16:07:52] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:54] [16:07:53] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:55] [16:07:54] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:56] [16:07:55] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:57] [16:07:56] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:58] [16:07:57] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:59] [16:07:58] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:07:59] Traceback (most recent call last):
+
+[2026-07-08 16:07:59]   File "C:\Users\elois\anaconda3\envs\dataEnvironment\Lib\site-packages\bleak\backends\winrt\client.py", line 428, in connect
+
+[2026-07-08 16:07:59]     self.services = await self._get_services(
+
+[2026-07-08 16:07:59]                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-07-08 16:07:59]     ...<2 lines>...
+
+[2026-07-08 16:07:59]     )
+
+[2026-07-08 16:07:59]     ^
+
+[2026-07-08 16:07:59]   File "C:\Users\elois\anaconda3\envs\dataEnvironment\Lib\site-packages\bleak\backends\winrt\client.py", line 698, in _get_services
+
+[2026-07-08 16:07:59]     result = await FutureLike(self._requester.get_gatt_services_async())
+
+[2026-07-08 16:07:59]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-07-08 16:07:59]   File "C:\Users\elois\anaconda3\envs\dataEnvironment\Lib\site-packages\bleak\backends\winrt\client.py", line 1193, in __await__
+
+[2026-07-08 16:07:59]     yield self  # This tells Task to wait for completion.
+
+[2026-07-08 16:07:59]     ^^^^^^^^^^
+
+[2026-07-08 16:07:59]   File "C:\Users\elois\anaconda3\envs\dataEnvironment\Lib\site-packages\bleak\backends\winrt\client.py", line 1127, in result
+
+[2026-07-08 16:07:59]     raise asyncio.CancelledError
+
+[2026-07-08 16:07:59] asyncio.exceptions.CancelledError
+
+[2026-07-08 16:07:59] 
+
+[2026-07-08 16:07:59] The above exception was the direct cause of the following exception:
+
+[2026-07-08 16:07:59] 
+
+[2026-07-08 16:07:59] Traceback (most recent call last):
+
+[2026-07-08 16:07:59]   File "C:\Polar-Band-and-Grove-Data-Collection\LSL_scripts\PolarOH1_LSL.py", line 125, in <module>
+
+[2026-07-08 16:07:59]     asyncio.run(main(args.address, args.category_file))
+
+[2026-07-08 16:07:59]     ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[2026-07-08 16:07:59]   File "C:\Users\elois\anaconda3\envs\dataEnvironment\Lib\asyncio\runners.py", line 204, in run
+
+[2026-07-08 16:07:59]     return runner.run(main)
+
+[2026-07-08 16:07:59]            ~~~~~~~~~~^^^^^^
+
+[2026-07-08 16:07:59]   File "C:\Users\elois\anaconda3\envs\dataEnvironment\Lib\asyncio\runners.py", line 127, in run
+
+[2026-07-08 16:07:59]     return self._loop.run_until_complete(task)
+
+[2026-07-08 16:07:59]            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+
+[2026-07-08 16:07:59]   File "C:\Users\elois\anaconda3\envs\dataEnvironment\Lib\asyncio\base_events.py", line 719, in run_until_complete
+
+[2026-07-08 16:07:59]     return future.result()
+
+[2026-07-08 16:07:59]            ~~~~~~~~~~~~~^^
+
+[2026-07-08 16:07:59]   File "C:\Polar-Band-and-Grove-Data-Collection\LSL_scripts\PolarOH1_LSL.py", line 101, in main
+
+[2026-07-08 16:07:59]     async with BleakClient(device_address) as client:
+
+[2026-07-08 16:07:59]                ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+
+[2026-07-08 16:07:59]   File "C:\Users\elois\anaconda3\envs\dataEnvironment\Lib\site-packages\bleak\__init__.py", line 638, in __aenter__
+
+[2026-07-08 16:07:59]     await self.connect()
+
+[2026-07-08 16:07:59]   File "C:\Users\elois\anaconda3\envs\dataEnvironment\Lib\site-packages\bleak\__init__.py", line 660, in connect
+
+[2026-07-08 16:07:59]     await self._backend.connect(self._pair_before_connect, **kwargs)
+
+[2026-07-08 16:07:59]   File "C:\Users\elois\anaconda3\envs\dataEnvironment\Lib\site-packages\bleak\backends\winrt\client.py", line 384, in connect
+
+[2026-07-08 16:07:59]     async with async_timeout(timeout):
+
+[2026-07-08 16:07:59]                ~~~~~~~~~~~~~^^^^^^^^^
+
+[2026-07-08 16:07:59]   File "C:\Users\elois\anaconda3\envs\dataEnvironment\Lib\asyncio\timeouts.py", line 114, in __aexit__
+
+[2026-07-08 16:07:59]     raise TimeoutError from exc_val
+
+[2026-07-08 16:07:59] TimeoutError
+
+[2026-07-08 16:08:00] [16:07:59] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:08:01] [16:08:00] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:08:02] [16:08:01] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:08:03] [16:08:02] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:08:04] [16:08:03] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:08:05] [16:08:04] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:08:06] [16:08:05] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+
+[2026-07-08 16:08:07] Stop the process
+
+[2026-07-08 16:08:07] [16:08:06] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest  [q] Test1  [w] Test2  [e] Test3
+

@@ -1,0 +1,10 @@
+[2026-07-08 10:28:53] Make sure your bluetooth is on
+
+[2026-07-08 10:28:54] Traceback (most recent call last):
+
+[2026-07-08 10:28:54]   File "C:\Polar-Band-and-Grove-Data-Collection\LSL_scripts\main.py", line 14, in <module>
+
+[2026-07-08 10:28:54]     from bleak import BleakScanner
+
+[2026-07-08 10:28:54] ModuleNotFoundError: No module named 'bleak'
+

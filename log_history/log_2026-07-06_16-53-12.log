@@ -1,0 +1,172 @@
+[2026-07-06 16:53:15] Make sure your bluetooth is on
+
+[2026-07-06 16:53:16] ==================================================
+
+[2026-07-06 16:53:16]   SCANNER MULTI-DEVICES POLAR (H10 / OH1) + LSL + UDP
+
+[2026-07-06 16:53:16] ==================================================
+
+[2026-07-06 16:53:16] 
+
+[2026-07-06 16:53:16] [Polar] Scan Bluetooth en cours...
+
+[2026-07-06 16:53:24] SELECT DEVICES
+
+[2026-07-06 16:53:24]   [Polar H10] Polar H10 099EED32  (24:AC:AC:09:9E:ED) — In waiting of validation [Y/N] from the interface...
+
+[2026-07-06 16:53:44] [UDP] Connection choice saved : N
+
+[2026-07-06 16:53:44]     -> Ignored
+
+[2026-07-06 16:53:44]   [Polar OH1] Polar OH1 021A053D  (24:AC:AC:02:1A:05) — In waiting of validation [Y/N] from the interface...
+
+[2026-07-06 16:53:53] [UDP] Connection choice saved : Y
+
+[2026-07-06 16:53:53]     -> Selected 
+
+[2026-07-06 16:53:53] [INFO] Streaming LSL mode activated
+
+[2026-07-06 16:53:53] 2026-07-06 16:53:53.145 (  37.171s) [        9B67D041]      netinterfaces.cpp:36    INFO| netif '{539DC577-D99F-4316-A639-663F22E9C6BE}' (status: 2, multicast: 1
+
+[2026-07-06 16:53:53] 2026-07-06 16:53:53.145 (  37.171s) [        9B67D041]      netinterfaces.cpp:36    INFO| netif '{03D9F15A-86BA-4B7A-A147-4EBD233E9CB6}' (status: 2, multicast: 1
+
+[2026-07-06 16:53:53] 2026-07-06 16:53:53.146 (  37.172s) [        9B67D041]      netinterfaces.cpp:36    INFO| netif '{86555E7A-DE92-468E-9441-D4D1450E0FAD}' (status: 2, multicast: 1
+
+[2026-07-06 16:53:53] 2026-07-06 16:53:53.146 (  37.172s) [        9B67D041]      netinterfaces.cpp:36    INFO| netif '{A569205C-FFC8-48F8-A20C-C21819A3FF1D}' (status: 1, multicast: 1
+
+[2026-07-06 16:53:53] 2026-07-06 16:53:53.146 (  37.172s) [        9B67D041]      netinterfaces.cpp:58    INFO| 	IPv6 ifindex 16
+
+[2026-07-06 16:53:53] 2026-07-06 16:53:53.146 (  37.172s) [        9B67D041]      netinterfaces.cpp:36    INFO| netif '{DAF5F751-BC23-43B1-A06A-1CB7FB4AC761}' (status: 2, multicast: 1
+
+[2026-07-06 16:53:53] 2026-07-06 16:53:53.146 (  37.173s) [        9B67D041]      netinterfaces.cpp:36    INFO| netif '{0F9D47FB-694C-11F1-A216-806E6F6E6963}' (status: 1, multicast: 1
+
+[2026-07-06 16:53:53] 2026-07-06 16:53:53.147 (  37.173s) [        9B67D041]      netinterfaces.cpp:58    INFO| 	IPv6 ifindex 1
+
+[2026-07-06 16:53:53] 2026-07-06 16:53:53.147 (  37.173s) [        9B67D041]         api_config.cpp:126   INFO| Loaded default config
+
+[2026-07-06 16:53:53] 2026-07-06 16:53:53.185 (  37.211s) [        9B67D041]             common.cpp:78    INFO| git:64988c6a14b8dc3b3f270ece58eab4f480bfab43/branch:refs/tags/v1.17.7/build:Release/compiler:MSVC-19.29.30159.0/link:SHARED
+
+[2026-07-06 16:53:53] START STREAMING
+
+[2026-07-06 16:53:53]   Polar OH1  24:AC:AC:02:1A:05  :  C:\Users\elois\anaconda3\envs\dataEnvironment\python.exe PolarOH1_LSL.py --mac 24:AC:AC:02:1A:05 --category-file C:\Users\elois\AppData\Local\Temp\polar_category.txt
+
+[2026-07-06 16:53:53] [16:53:53] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:53:53] Connecting to Polar OH1 at 24:AC:AC:02:1A:05...
+
+[2026-07-06 16:53:53] 2026-07-06 16:53:53.394 (   0.012s) [        62928581]      netinterfaces.cpp:36    INFO| netif '{539DC577-D99F-4316-A639-663F22E9C6BE}' (status: 2, multicast: 1
+
+[2026-07-06 16:53:53] 2026-07-06 16:53:53.394 (   0.012s) [        62928581]      netinterfaces.cpp:36    INFO| netif '{03D9F15A-86BA-4B7A-A147-4EBD233E9CB6}' (status: 2, multicast: 1
+
+[2026-07-06 16:53:53] 2026-07-06 16:53:53.395 (   0.013s) [        62928581]      netinterfaces.cpp:36    INFO| netif '{86555E7A-DE92-468E-9441-D4D1450E0FAD}' (status: 2, multicast: 1
+
+[2026-07-06 16:53:53] 2026-07-06 16:53:53.395 (   0.013s) [        62928581]      netinterfaces.cpp:36    INFO| netif '{A569205C-FFC8-48F8-A20C-C21819A3FF1D}' (status: 1, multicast: 1
+
+[2026-07-06 16:53:53] 2026-07-06 16:53:53.395 (   0.013s) [        62928581]      netinterfaces.cpp:58    INFO| 	IPv6 ifindex 16
+
+[2026-07-06 16:53:53] 2026-07-06 16:53:53.395 (   0.013s) [        62928581]      netinterfaces.cpp:36    INFO| netif '{DAF5F751-BC23-43B1-A06A-1CB7FB4AC761}' (status: 2, multicast: 1
+
+[2026-07-06 16:53:53] 2026-07-06 16:53:53.395 (   0.013s) [        62928581]      netinterfaces.cpp:36    INFO| netif '{0F9D47FB-694C-11F1-A216-806E6F6E6963}' (status: 1, multicast: 1
+
+[2026-07-06 16:53:53] 2026-07-06 16:53:53.395 (   0.014s) [        62928581]      netinterfaces.cpp:58    INFO| 	IPv6 ifindex 1
+
+[2026-07-06 16:53:53] 2026-07-06 16:53:53.396 (   0.014s) [        62928581]         api_config.cpp:126   INFO| Loaded default config
+
+[2026-07-06 16:53:53] 2026-07-06 16:53:53.396 (   0.014s) [        62928581]             common.cpp:78    INFO| git:64988c6a14b8dc3b3f270ece58eab4f480bfab43/branch:refs/tags/v1.17.7/build:Release/compiler:MSVC-19.29.30159.0/link:SHARED
+
+[2026-07-06 16:53:55] [16:53:54] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:53:56] [16:53:55] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:53:56] [16:53:56] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:53:57] Connected.
+
+[2026-07-06 16:53:57] PMD capacity : 0f0e000000000000000000000000000000
+
+[2026-07-06 16:53:57] PMD Response: f00201000000
+
+[2026-07-06 16:53:58] [16:53:57] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:53:58] [16:53:58] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:53:58] Streams LSL active (HR + PPG).
+
+[2026-07-06 16:54:00] [16:53:59] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:01] [16:54:00] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:02] [16:54:01] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:03] [16:54:02] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:04] [16:54:03] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:05] [16:54:04] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:06] [16:54:05] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:07] [16:54:06] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:08] [16:54:07] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:09] [16:54:08] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:10] [16:54:09] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:11] [16:54:10] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:12] [16:54:11] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:13] [16:54:12] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:14] [16:54:13] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:15] [16:54:14] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:16] [16:54:15] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:17] [16:54:16] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:18] [16:54:17] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:19] [16:54:18] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:20] [16:54:19] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:21] [16:54:20] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:22] [16:54:21] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:23] [16:54:22] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:24] [16:54:23] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:25] [16:54:24] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:26] [16:54:25] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:27] [16:54:26] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:28] [16:54:27] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:29] [16:54:28] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:30] [16:54:29] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:31] [16:54:30] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:32] [16:54:31] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:33] [16:54:32] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:34] [16:54:33] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:35] [16:54:34] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:36] Stop the process
+
+[2026-07-06 16:54:36] [16:54:35] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
+[2026-07-06 16:54:36] [16:54:36] Category : Rest  |  [s] Stroop  [r] Reaction  [n] N-Back  [t] Rest
+
