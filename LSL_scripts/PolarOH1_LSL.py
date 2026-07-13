@@ -4,6 +4,10 @@ from bleak import BleakClient
 from pylsl import StreamInfo, StreamOutlet
 import os
 import tempfile
+import signal
+import sys
+import uuid
+from time import time
 
 HR_UUID     = "00002a37-0000-1000-8000-00805f9b34fb"
 PMD_CONTROL = "fb005c81-02e7-f387-1cad-8acd2d8df0c8"
@@ -15,6 +19,7 @@ _condition_file = os.path.join(tempfile.gettempdir(), "polar_condition_bit.txt")
 hr_outlet  = None
 ppg_outlet = None
 _category_file = ""
+_running = True
 
 
 def read_category() -> str:
@@ -45,15 +50,17 @@ def read_state() -> tuple[str, str]:
 
 def create_outlets(mac_address: str):
     mac_key = mac_address.upper().replace(':', '')
+    # Ajouter un UUID unique pour éviter les collisions si le script est relancé
+    unique_id = str(uuid.uuid4())[:8]
 
     # HR : 3 canaux — valeur + catégorie + condition
-    hr_info = StreamInfo(f"PolarOH1_{mac_key}_HR", "HR", 3, 1, "string", f"oh1_hr_{mac_key}")
+    hr_info = StreamInfo(f"PolarOH1_{mac_key}_HR", "HR", 3, 1, "string", f"oh1_hr_{mac_key}_{unique_id}")
     hr_info.desc().append_child_value("channel_0", "hr_value")
     hr_info.desc().append_child_value("channel_1", "category")
     hr_info.desc().append_child_value("channel_2", "condition")
 
     # PPG : 5 canaux — ch0, ch1, ch2 + category + condition 
-    ppg_info = StreamInfo(f"PolarOH1_{mac_key}_PPG", "PPG", 5, 130, "string", f"oh1_ppg_{mac_key}")
+    ppg_info = StreamInfo(f"PolarOH1_{mac_key}_PPG", "PPG", 5, 130, "string", f"oh1_ppg_{mac_key}_{unique_id}")
     ppg_info.desc().append_child_value("channel_0", "ppg_ch0")
     ppg_info.desc().append_child_value("channel_1", "ppg_ch1")
     ppg_info.desc().append_child_value("channel_2", "ppg_ch2")
@@ -91,34 +98,63 @@ def handle_ppg(sender, data):
         ppg_outlet.push_sample([str(ch0), str(ch1), str(ch2), category, condition])
         i += 9
 
+
+def signal_handler(sig, frame):
+    """Gestionnaire pour arrêter gracieusement le script."""
+    global _running
+    print("\nArrêt du script LSL...")
+    _running = False
+
 async def main(device_address: str, category_file: str):
-    global hr_outlet, ppg_outlet, _category_file
+    global hr_outlet, ppg_outlet, _category_file, _running
     _category_file = category_file
 
     print(f"Connecting to Polar OH1 at {device_address}...")
     hr_outlet, ppg_outlet = create_outlets(device_address)
 
-    async with BleakClient(device_address) as client:
-        print("Connected.")
+    try:
+        async with BleakClient(device_address) as client:
+            print("Connected.")
 
-        caps = await client.read_gatt_char(PMD_CONTROL)
-        print(f"PMD capacity : {caps.hex()}")
+            caps = await client.read_gatt_char(PMD_CONTROL)
+            print(f"PMD capacity : {caps.hex()}")
 
-        await client.start_notify(PMD_CONTROL, handle_pmd_response)
-        await client.start_notify(PMD_DATA, handle_ppg)   
-        await client.start_notify(PMD_CONTROL, handle_hr)
+            await client.start_notify(HR_UUID, handle_hr)
+            await client.start_notify(PMD_CONTROL, handle_pmd_response)
+            await client.start_notify(PMD_DATA, handle_ppg)
 
-        await asyncio.sleep(0.5)
+            await asyncio.sleep(0.5)
 
-        print("Starting PPG stream...")
-        await client.write_gatt_char(PMD_CONTROL, START_PPG, response=True)
+            print("Starting PPG stream...")
+            await client.write_gatt_char(PMD_CONTROL, START_PPG, response=True)
 
-        print("Streams LSL active (HR + PPG).")
-        while True:
-            await asyncio.sleep(1)
+            print("Streams LSL active (HR + PPG).")
+            while _running:
+                await asyncio.sleep(1)
+            
+            # Nettoyage : arrêter les notifications
+            print("Stopping notifications...")
+            await client.stop_notify(HR_UUID)
+            await client.stop_notify(PMD_CONTROL)
+            await client.stop_notify(PMD_DATA)
+    
+    except Exception as e:
+        print(f"Error: {e}")
+    
+    finally:
+        # Fermer proprement les outlets
+        print("Closing LSL outlets...")
+        if hr_outlet is not None:
+            del hr_outlet
+        if ppg_outlet is not None:
+            del ppg_outlet
+        print("LSL outlets closed.")
 
 
 if __name__ == "__main__":
+    # Enregistrer le gestionnaire de signal pour Ctrl+C
+    signal.signal(signal.SIGINT, signal_handler)
+    
     parser = argparse.ArgumentParser(description="Polar OH1 LSL streamer")
     parser.add_argument("--mac", "--address", dest="address", required=True)
     parser.add_argument("--category-file", dest="category_file", required=True,

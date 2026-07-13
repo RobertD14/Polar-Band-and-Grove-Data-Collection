@@ -2,6 +2,7 @@ import argparse
 import asyncio
 import struct
 import os
+import uuid
 from bleak import BleakClient
 from pylsl import StreamInfo, StreamOutlet
 import tempfile
@@ -59,16 +60,18 @@ def read_state(category_file: str) -> tuple[str, str]:
 async def main(device_address: str, category_file: str):
     device_address = device_address.upper()
     mac_key = device_address.replace(':', '')
+    # Ajouter un UUID unique pour éviter les collisions si le script est relancé
+    unique_id = str(uuid.uuid4())[:8]
 
     print(f"Connecting directly to Polar H10 at {device_address} without scanning...")
 
     # Naming the streams with the MAC address to avoid conflicts
-    ecg_info = StreamInfo(f'PolarH10_{mac_key}_ECG', 'ECG', 3, 130, 'string', f'polar_ecg_{mac_key}')
+    ecg_info = StreamInfo(f'PolarH10_{mac_key}_ECG', 'ECG', 3, 130, 'string', f'polar_ecg_{mac_key}_{unique_id}')
     ecg_info.desc().append_child_value("channel_0", "ecg_value")
     ecg_info.desc().append_child_value("channel_1", "category")
     ecg_info.desc().append_child_value("channel_2", "condition")
 
-    hr_info = StreamInfo(f'PolarH10_{mac_key}_HR', 'HR', 3, 1, 'string', f'polar_hr_{mac_key}')
+    hr_info = StreamInfo(f'PolarH10_{mac_key}_HR', 'HR', 3, 1, 'string', f'polar_hr_{mac_key}_{unique_id}')
     hr_info.desc().append_child_value("channel_0", "hr_value")
     hr_info.desc().append_child_value("channel_1", "category")
     hr_info.desc().append_child_value("channel_2", "condition")

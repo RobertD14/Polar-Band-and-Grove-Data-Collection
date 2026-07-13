@@ -5,6 +5,7 @@ import tempfile
 import os
 import socket
 import time
+import uuid
 from dataclasses import dataclass
 from datetime import datetime
 from threading import Event, Thread
@@ -91,8 +92,11 @@ EVENT_LABELS: dict[str, str] = {
 
 class MarkerSender:
     def __init__(self) -> None:
-        # Configuration LSL (inchangée)
-        info = StreamInfo('TaskMarkers', 'Markers', 2, 0, 'string', 'events')
+        # Ajouter un UUID unique pour éviter les collisions si le script est relancé
+        unique_id = str(uuid.uuid4())[:8]
+        
+        # Configuration LSL avec source_id unique
+        info = StreamInfo('TaskMarkers', 'Markers', 2, 0, 'string', f'events_{unique_id}')
         info.desc().append_child_value("channel_0", "event_type")       
         info.desc().append_child_value("channel_1", "label")   
         self.outlet = StreamOutlet(info)
