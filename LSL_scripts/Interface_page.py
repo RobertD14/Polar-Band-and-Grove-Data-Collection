@@ -161,25 +161,26 @@ def on_close():
 
 root = tk.Tk()
 root.title("Multi-sensor synchronizer")
-root.geometry("700x500")
+root.geometry("1350x1050")
+root.tk.call("tk", "scaling", 0.75)
+root.option_add("*Font", ("Arial", 12))
+root.option_add("*Button.Font", ("Arial", 36))
+root.option_add("*Button.padX", 18)
+# root.option_add("*Button.padY", 5)
 root.protocol("WM_DELETE_WINDOW", on_close)
 
 # Fixed headings
-frame_header = tk.Frame(root, bg="#534AB7", height=40)
+frame_header = tk.Frame(root, bg="#534AB7", height=56)
 frame_header.pack(fill="x")
 frame_header.pack_propagate(False)
 tk.Label(frame_header, text="Steps to collect the data streams from multiple devices", bg="#534AB7", fg="white", font=("Arial", 16, "bold")).pack(side="left", padx=12, pady=8)
 
-# PanedWindow vertical below
-paned_v = tk.PanedWindow(root, orient="vertical", bg="#111", sashwidth=4)
-paned_v.pack(fill="both", expand=True)
-
 # PanedWindow vertical (top / bottom)
-paned_v = tk.PanedWindow(root, orient="vertical", bg="#333", sashwidth=4)
+paned_v = tk.PanedWindow(root, orient="vertical", bg="#333", sashwidth=6)
 paned_v.pack(fill="both", expand=True)
 
 # --- Top : 2 panels side by side ---
-paned_h = tk.PanedWindow(paned_v, orient="horizontal", bg="#111", sashwidth=4)
+paned_h = tk.PanedWindow(paned_v, orient="horizontal", bg="#111", sashwidth=6)
 
 frame_left = tk.Frame(paned_h, bg="#2b2b3b")
 # Top bar with Label + buttons
@@ -188,19 +189,19 @@ top_bar.pack(side="top", fill="x", padx=0, pady=8)
 
 tk.Label(top_bar, text="LSL streaming for Polar devices", bg="#2b2b3b", fg="white", font=("Arial", 14, "bold")).pack(side="left", padx=20)
 
-tk.Button(top_bar, text="Start streaming", command=run_script, bg="#047913", fg="black",font=10).pack(side="left", padx=20)
+tk.Button(top_bar, text="Start streaming", command=run_script, bg="#047913", fg="black", font=("Arial", 36)).pack(side="left", padx=20)
 tk.Button(top_bar, text="Y", width=5, command=lambda: send_key("y"), bg="#444466", fg="white").pack(side="left", padx=15)
 tk.Button(top_bar, text="N", width=5, command=lambda: send_key("n"), bg="#444466", fg="white").pack(side="left", padx=2)
 
 # Console below
 console = tk.Text(frame_left, width=80, height=15, bg="#0f0f1a", fg="white", relief="flat")
 console.pack(fill="both", expand=True, pady=10)
-paned_h.add(frame_left, width=700, height=450) 
+paned_h.add(frame_left, width=1150, height=600)
 
 # --- FRAME RIGHT (INTEGRATION DE CLOCK1) ---
 frame_right = tk.Frame(paned_h, bg="#1e1e2e")
-tk.Label(frame_right, text="LSL streaming for other devices", bg="#1e1e2e", fg="white", font=("Arial", 14, "bold")).pack(side="top", padx=0, pady=0)
-tk.Button(frame_right, text="Open Emotibit Oscilloscope", command=open_Emotibit_oscilloscope, width=35, bg="#534AB7", fg="white",font=8).pack(side="top", padx=15, pady=20)
+tk.Label(frame_right, text="LSL streaming for other devices", bg="#1e1e2e", fg="white", font=("Arial", 20, "bold")).pack(side="top", padx=0, pady=0)
+tk.Button(frame_right, text="Emotibit Oscilloscope", command=open_Emotibit_oscilloscope, width=18, bg="#534AB7", fg="white", font=("Arial", 20)).pack(side="top", padx=15, pady=20)
 
 # INTEGRATION OF CLOCK1 :
 stopwatch_embed = Stopwatch(frame_right)
@@ -216,9 +217,9 @@ for widget in frame_right.winfo_children():
         widget.pack_forget()
         widget.pack(side="bottom", pady=10)
 
-paned_h.add(frame_right, width=350)
+paned_h.add(frame_right, width=650)
 
-paned_v.add(paned_h, height=550)  # little on top
+paned_v.add(paned_h, height=600)
 
 # --- Bottom : Big pannel ---
 frame_bottom = tk.Frame(paned_v, bg="#0f0f1a")
@@ -230,32 +231,47 @@ top_bar.pack(side="top", fill="x", padx=0, pady=8)
 frame_tasks = tk.Frame(top_bar, bg=top_bar["bg"])
 frame_tasks.pack(side="top", anchor="w", pady=5)
 
+frame_recording = tk.Frame(frame_tasks, bg=frame_tasks["bg"])
+frame_recording.pack(side="top", anchor="w", pady=5)
+tk.Label(frame_recording, text="Start recording", bg="#0f0f1a", fg="white", font=("Arial", 14, "bold")).pack(side="left", padx=20)
+tk.Button(frame_recording, text="Open LabRecorder", command=open_lab_recorder, bg="#444466", fg="white", font=("Arial", 36)).pack(side="left", padx=30)
 
-tk.Label(frame_tasks, text="Start recording", bg="#0f0f1a", fg="white", font=("Arial", 14, "bold")).pack(side="left", padx=20)
-tk.Button(frame_tasks, text="Open LabRecorder", command=open_lab_recorder, bg="#444466", fg="white", font=10).pack(side="left", padx=50)
-
-tk.Button(frame_tasks, text="Reaction Test", command=lambda: send_key("r"), width=12, bg="#534AB7", fg="white").pack(side="left", padx=15)
-tk.Button(frame_tasks, text="Stroop Test",   command=lambda: send_key("s"), width=12, bg="#534AB7", fg="white").pack(side="left", padx=15)
-tk.Button(frame_tasks, text="N-back",        command=lambda: send_key("n"), width=12, bg="#534AB7", fg="white").pack(side="left", padx=15)
-tk.Button(frame_tasks, text="Rest",          command=lambda: send_key("t"), width=12, bg="#534AB7", fg="white").pack(side="left", padx=15)
-tk.Button(frame_tasks, text="Test1",          command=lambda: send_key("q"), width=12, bg="#534AB7", fg="white").pack(side="left", padx=15)
-tk.Button(frame_tasks, text="Test2",          command=lambda: send_key("w"), width=12, bg="#534AB7", fg="white").pack(side="left", padx=15)
-tk.Button(frame_tasks, text="Test3",          command=lambda: send_key("e"), width=12, bg="#534AB7", fg="white").pack(side="left", padx=15)
-#HERE TO ADD MORE BUTTONS
+frame_phase_buttons = tk.Frame(frame_tasks, bg=frame_tasks["bg"])
+frame_phase_buttons.pack(side="top", anchor="w", pady=5)
+phase_buttons = [
+    ("Reaction Test", "r"),
+    ("Stroop Test", "s"),
+    ("Rest", "t"),
+    ("Math 1", "q"),
+    ("Math 2", "w"),
+    ("Math 3", "e"),
+]
+for index, (label, key) in enumerate(phase_buttons):
+    tk.Button(
+        frame_phase_buttons,
+        text=label,
+        command=lambda key=key: send_key(key),
+        width=12,
+        bg="#534AB7",
+        fg="white",
+        font=("Arial", 36),
+    ).grid(row=index // 3, column=index % 3, padx=15, pady=8, sticky="ew")
+for column in range(3):
+    frame_phase_buttons.grid_columnconfigure(column, weight=1)
 
 tk.Label(
-    frame_tasks, 
-    text="(Choose the phase of the test)", 
-    bg="#0f0f1a", 
-    fg="white", 
-    font=("Arial", 11)
-).pack(side="left", padx=20)
+    frame_phase_buttons,
+    text="Choose the phase of the test",
+    bg="#0f0f1a",
+    fg="white",
+    font=("Arial", 24),
+).grid(row=2, column=0, columnspan=3, pady=8)
 
 # ─── STOP BUTTON (BELOW) ───
-tk.Button(top_bar, text="Stop streaming Polar devices", command=forced_stop, bg="#F90303", fg="white", font=8).pack(side="right", padx=15, pady=5)
+tk.Button(top_bar, text="Stop streaming Polar devices", command=forced_stop, bg="#F90303", fg="white", font=("Arial", 36)).pack(side="right", padx=15, pady=5)
 
 # fixed height to not crush top_bar
 tk.Text(frame_bottom, bg="#0f0f1a", fg="white", relief="flat", height=3).pack(fill="x", expand=False)
 
-paned_v.add(frame_bottom, height=250)
+paned_v.add(frame_bottom, height=700)
 root.mainloop()
