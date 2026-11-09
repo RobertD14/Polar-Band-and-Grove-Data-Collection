@@ -1,0 +1,6 @@
+pyxdf
+pandas
+bleak
+pylsl
+matplotlib
+numpy

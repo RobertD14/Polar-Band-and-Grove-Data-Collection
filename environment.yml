@@ -1,0 +1,11 @@
+name: LSL
+channels:
+  - defaults
+dependencies:
+  - python
+  - numpy
+  - pandas
+  - matplotlib
+  - pyxdf
+  - bleak
+  - pylsl
